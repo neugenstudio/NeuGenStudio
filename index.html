@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NeuGenStudio - AI-Powered Brand Solutions</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/framer-motion/6.3.3/framer-motion.cjs.js"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0a0a0a;
+            color: #e5e5e5;
+        }
+        .glassmorphism {
+            background: rgba(10, 10, 10, 0.25);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .glowing-headline {
+            text-shadow: 0 0 10px rgba(99, 102, 241, 0.5), 0 0 20px rgba(99, 102, 241, 0.5), 0 0 30px rgba(167, 139, 250, 0.5);
+        }
+        .neon-highlight-blue {
+            box-shadow: 0 0 15px rgba(59, 130, 246, 0.6);
+        }
+        .neon-highlight-violet {
+            box-shadow: 0 0 15px rgba(139, 92, 246, 0.6);
+        }
+        .animated-underline {
+            position: relative;
+            display: inline-block;
+        }
+        .animated-underline::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            transform: scaleX(0);
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: #8b5cf6;
+            transform-origin: bottom right;
+            transition: transform 0.25s ease-out;
+        }
+        .animated-underline:hover::after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
+        .pulse-on-hover:hover {
+            animation: pulse 1s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+        /* Instagram Popup Animation */
+        @keyframes slide-in {
+            from {
+                transform: translateY(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        .insta-popup {
+            animation: slide-in 0.5s ease-out forwards;
+        }
+    </style>
+</head>
+<body class="bg-black text-gray-200">
+
+    <!-- Particle Background -->
+    <canvas id="particle-background" class="fixed top-0 left-0 w-full h-full z-[-1]"></canvas>
+
+    <!-- Instagram Popup -->
+    <div id="insta-popup" class="fixed bottom-5 right-5 glassmorphism p-4 rounded-lg shadow-lg z-50 insta-popup hidden">
+        <p class="text-white">Direct service on Instagram. Click here!</p>
+        <a href="https://www.instagram.com/neugenstudio" target="_blank" class="block bg-indigo-600 text-white font-bold py-2 px-4 rounded-full mt-2 text-center transition duration-300 ease-in-out hover:bg-indigo-500">
+            Go to Instagram
+        </a>
+    </div>
+
+    <!-- Header -->
+    <header class="fixed top-0 left-0 right-0 z-50 glassmorphism">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <h1 class="text-2xl font-bold">NeuGenStudio</h1>
+            <div class="hidden md:flex space-x-8 items-center">
+                <a href="#features" class="animated-underline">Services</a>
+                <a href="#work" class="animated-underline">My Work</a>
+                <a href="#demo" class="animated-underline">Demo</a>
+                <a href="#pricing" class="animated-underline">Pricing</a>
+                <a href="#testimonials" class="animated-underline">Testimonials</a>
+            </div>
+            <button id="dark-light-toggle" class="p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m8.66-15.66l-.7.7M4.04 19.96l-.7.7M21 12h-1M4 12H3m15.66 8.66l-.7-.7M4.04 4.04l-.7-.7" />
+                </svg>
+            </button>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="hero" class="h-screen flex items-center justify-center text-center">
+            <div class="container mx-auto px-6">
+                <h2 class="text-5xl md:text-7xl font-black glowing-headline">AI-Powered Brand Solutions</h2>
+                <p class="text-lg md:text-xl mt-4 max-w-3xl mx-auto">We build intelligent systems that elevate your brand to the next generation.</p>
+                <a href="#features" class="mt-8 inline-block bg-indigo-600 text-white font-bold py-3 px-8 rounded-full transition duration-300 ease-in-out transform hover:scale-105 pulse-on-hover">Discover Our Services</a>
+            </div>
+        </section>
+
+        <!-- AI-Powered Services Section -->
+        <section id="features" class="py-20">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-4xl font-bold">AI-Powered Services</h2>
+                </div>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Service 1 -->
+                    <div class="glassmorphism p-6 rounded-2xl transition duration-300 ease-in-out transform hover:-translate-y-2">
+                        <h3 class="text-2xl font-bold mb-2">AI Product Shoot</h3>
+                        <p class="mb-3 text-gray-400">> Ultra-realistic product images using AI — great for catalogues, ads, and branding.</p>
+                        <p class="text-xl font-bold text-violet-400">💰 From $49 / shoot</p>
+                    </div>
+                    <!-- Service 2 -->
+                    <div class="glassmorphism p-6 rounded-2xl transition duration-300 ease-in-out transform hover:-translate-y-2">
+                        <h3 class="text-2xl font-bold mb-2">AI Video Reels (10–30 sec)</h3>
+                        <p class="mb-3 text-gray-400">> Short AI-made reels perfect for social media marketing.</p>
+                        <p class="text-xl font-bold text-violet-400">💰 Starts at $69 per reel</p>
+                    </div>
+                    <!-- Service 3 -->
+                    <div class="glassmorphism p-6 rounded-2xl transition duration-300 ease-in-out transform hover:-translate-y-2">
+                        <h3 class="text-2xl font-bold mb-2">AI Chatbot / AI Assistant</h3>
+                        <p class="mb-3 text-gray-400">> Automated assistant trained for your brand or business.</p>
+                        <p class="text-xl font-bold text-violet-400">💰 From $99 — based on features</p>
+                    </div>
+                    <!-- Service 4 -->
+                    <div class="glassmorphism p-6 rounded-2xl transition duration-300 ease-in-out transform hover:-translate-y-2">
+                        <h3 class="text-2xl font-bold mb-2">AI Review Generator</h3>
+                        <p class="mb-3 text-gray-400">> Generate creative, positive reviews using AI for your products or services.</p>
+                        <p class="text-xl font-bold text-violet-400">💰 $29 / 10 reviews | $59 / 25 reviews</p>
+                    </div>
+                    <!-- Service 5 -->
+                    <div class="glassmorphism p-6 rounded-2xl transition duration-300 ease-in-out transform hover:-translate-y-2">
+                        <h3 class="text-2xl font-bold mb-2">AI Copywriting</h3>
+                        <p class="mb-3 text-gray-400">> Instagram captions, product titles, ad content — crafted with AI tools.</p>
+                        <p class="text-xl font-bold text-violet-400">💰 From $25 / page or set</p>
+                    </div>
+                    <!-- Service 6 -->
+                    <div class="glassmorphism p-6 rounded-2xl transition duration-300 ease-in-out transform hover:-translate-y-2">
+                        <h3 class="text-2xl font-bold mb-2">AI Landing Page (HTML/CSS)</h3>
+                        <p class="mb-3 text-gray-400">> Clean, mobile-ready landing page using AI-based layout and content.</p>
+                        <p class="text-xl font-bold text-violet-400">💰 From $89 — responsive included</p>
+                    </div>
+                    <!-- Service 7 -->
+                     <div class="glassmorphism p-6 rounded-2xl transition duration-300 ease-in-out transform hover:-translate-y-2 md:col-span-2 lg:col-span-1">
+                        <h3 class="text-2xl font-bold mb-2">AI Avatars</h3>
+                        <p class="mb-3 text-gray-400">> Create a unique talking or image-based avatar for your brand.</p>
+                        <p class="text-xl font-bold text-violet-400">💰 From $79 — varies by type</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- My Work Section -->
+        <section id="work" class="py-20">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-4xl font-bold">My Work</h2>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- I have updated the src attributes to embed the Google Drive images. -->
+                    <div class="glassmorphism rounded-2xl overflow-hidden">
+                        <img src="https://drive.google.com/uc?export=view&id=1jQtFBKcZaH-J3KwvDYt5V3DeSIAZNjw2" alt="Work 1" class="w-full h-full object-cover">
+                    </div>
+                    <div class="glassmorphism rounded-2xl overflow-hidden">
+                        <img src="https://drive.google.com/uc?export=view&id=1Whva5j5-RYEbHD_x78ff8V-eRDBEa8Zw" alt="Work 2" class="w-full h-full object-cover">
+                    </div>
+                    <div class="glassmorphism rounded-2xl overflow-hidden">
+                        <img src="https://drive.google.com/uc?export=view&id=15L-W1gxOM8DtIToEruvEbo8hhHwkqQdH" alt="Work 3" class="w-full h-full object-cover">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Demo Section -->
+        <section id="demo" class="py-20">
+            <div class="container mx-auto px-6">
+                <div class="glassmorphism rounded-2xl p-8 border-2 border-indigo-500 neon-highlight-blue">
+                    <div class="text-center mb-8">
+                        <h3 class="text-3xl font-bold">Interactive AI Demo</h3>
+                        <p class="text-lg">Experience the power of our AI in real-time.</p>
+                    </div>
+                    <div class="bg-black bg-opacity-50 rounded-lg p-6 font-mono text-sm text-left">
+                        <div class="flex items-center mb-4">
+                            <span class="text-green-400 mr-2">></span>
+                            <span id="demo-input" class="flex-1"></span>
+                        </div>
+                        <div id="demo-output" class="border-t border-gray-700 pt-4 mt-4">
+                            <p class="text-gray-400">// AI output will appear here...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pricing Section -->
+        <section id="pricing" class="py-20">
+            <div class="container mx-auto px-6">
+                 <div class="text-center mb-12">
+                    <h2 class="text-4xl font-bold">Beginner-Friendly Pricing</h2>
+                    <p class="text-lg mt-2">Choose the perfect bundle to kickstart your brand's journey.</p>
+                </div>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Nano Bundle -->
+                    <div class="glassmorphism p-8 rounded-2xl transition duration-300 ease-in-out transform hover:scale-105 border-2 border-violet-500 neon-highlight-violet">
+                        <h3 class="text-3xl font-bold mb-4 text-center">Nano Bundle</h3>
+                        <ul class="my-8 space-y-3 text-lg">
+                            <li><span class="text-green-400 mr-2">✔</span> 2 AI Product Images</li>
+                            <li><span class="text-green-400 mr-2">✔</span> 5 AI-Generated Reviews</li>
+                        </ul>
+                        <div class="text-center mb-6">
+                             <p class="text-5xl font-black mb-2">$49</p>
+                        </div>
+                        <a href="mailto:neugenstudio.official@gmail.com" class="w-full inline-block bg-violet-600 text-white font-bold py-3 px-8 rounded-full transition duration-300 ease-in-out hover:bg-violet-500 pulse-on-hover text-center">Purchase Bundle</a>
+                        <p class="text-center text-yellow-400 mt-4 text-sm font-bold">Please email us first for payment details.</p>
+                    </div>
+
+                    <!-- Micro Bundle -->
+                    <div class="glassmorphism p-8 rounded-2xl transition duration-300 ease-in-out transform hover:scale-105 border-2 border-violet-500 neon-highlight-violet">
+                        <h3 class="text-3xl font-bold mb-4 text-center">Micro Bundle</h3>
+                        <ul class="my-8 space-y-3 text-lg">
+                            <li><span class="text-green-400 mr-2">✔</span> 1 AI Video Reel</li>
+                            <li><span class="text-green-400 mr-2">✔</span> AI Copywriting (1 Page)</li>
+                        </ul>
+                        <div class="text-center mb-6">
+                             <p class="text-5xl font-black mb-2">$89</p>
+                        </div>
+                        <a href="mailto:neugenstudio.official@gmail.com" class="w-full inline-block bg-violet-600 text-white font-bold py-3 px-8 rounded-full transition duration-300 ease-in-out hover:bg-violet-500 pulse-on-hover text-center">Purchase Bundle</a>
+                        <p class="text-center text-yellow-400 mt-4 text-sm font-bold">Please email us first for payment details.</p>
+                    </div>
+
+                    <!-- Starter Brand Package -->
+                    <div class="glassmorphism p-8 rounded-2xl transition duration-300 ease-in-out transform hover:scale-105 border-2 border-violet-500 neon-highlight-violet md:col-span-2 lg:col-span-1">
+                        <h3 class="text-3xl font-bold mb-4 text-center">Starter Brand Package <span class="text-lg text-green-400">(Save up to 20%)</span></h3>
+                        <ul class="my-8 space-y-3 text-lg">
+                            <li><span class="text-green-400 mr-2">✔</span> 5 AI Product Images</li>
+                            <li><span class="text-green-400 mr-2">✔</span> 2 AI Video Reels</li>
+                            <li><span class="text-green-400 mr-2">✔</span> 1-Page AI Landing Site</li>
+                            <li><span class="text-green-400 mr-2">✔</span> AI Assistant (Basic)</li>
+                            <li><span class="text-green-400 mr-2">✔</span> 10 AI-Generated Reviews</li>
+                        </ul>
+                        <div class="text-center mb-6">
+                             <p class="text-5xl font-black mb-2">$299</p>
+                             <p class="text-gray-400">(Valued at $375)</p>
+                        </div>
+                         <a href="mailto:neugenstudio.official@gmail.com" class="w-full inline-block bg-violet-600 text-white font-bold py-3 px-8 rounded-full transition duration-300 ease-in-out hover:bg-violet-500 pulse-on-hover text-center">Purchase Bundle</a>
+                         <p class="text-center text-yellow-400 mt-4 text-sm font-bold">Please email us first for payment details.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonial Carousel -->
+        <section id="testimonials" class="py-20">
+            <div class="container mx-auto px-6">
+                 <div class="text-center mb-12">
+                    <h2 class="text-4xl font-bold">What Our Clients Say</h2>
+                </div>
+                <div id="testimonial-carousel" class="relative w-full max-w-3xl mx-auto text-center">
+                    <!-- Testimonials will be injected here by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-12">
+        <div class="container mx-auto px-6 text-center">
+            <div class="mb-4">
+                 <a href="#hero" class="animated-underline mx-4">Home</a>
+                 <a href="mailto:neugenstudio.official@gmail.com" class="animated-underline mx-4">Contact</a>
+            </div>
+             <div class="flex justify-center space-x-6 my-6">
+                <a href="https://www.instagram.com/neugenstudio" target="_blank" aria-label="Instagram" class="text-gray-400 hover:text-white transition duration-300">
+                    <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.85s-.011 3.584-.069 4.85c-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07s-3.584-.012-4.85-.07c-3.252-.148-4.771-1.691-4.919-4.919-.058-1.265-.069-1.645-.069-4.85s.011-3.584.069-4.85c.149-3.225 1.664-4.771 4.919-4.919C8.416 2.175 8.796 2.163 12 2.163zm0 1.441c-3.111 0-3.469.012-4.666.068-2.656.122-3.951 1.42-4.072 4.072-.056 1.197-.067 1.555-.067 4.666s.011 3.469.067 4.666c.121 2.652 1.416 3.951 4.072 4.072 1.197.056 1.555.067 4.666.067s3.469-.011 4.666-.067c2.656-.121 3.951-1.416 4.072-4.072.056-1.197.067-1.555.067-4.666s-.011-3.469-.067-4.666c-.121-2.652-1.416-3.951-4.072-4.072-1.197-.056-1.555-.067-4.666-.067zM12 8.262c-2.063 0-3.738 1.675-3.738 3.738s1.675 3.738 3.738 3.738 3.738-1.675 3.738-3.738-1.675-3.738-3.738-3.738zm0 6.035c-1.269 0-2.296-1.027-2.296-2.296s1.027-2.296 2.296-2.296 2.296 1.027 2.296 2.296-1.027 2.296-2.296-2.296zm4.812-6.524c-.743 0-1.344.602-1.344 1.344s.602 1.344 1.344 1.344 1.344-.602 1.344-1.344-.602-1.344-1.344-1.344z" clip-rule="evenodd" /></svg>
+                </a>
+                 <a href="mailto:neugenstudio.official@gmail.com" aria-label="Email" class="text-gray-400 hover:text-white transition duration-300">
+                    <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M2.003 5.884L10 11.882l7.997-5.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path><path d="M18 8.118l-8 6-8-6V16a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path></svg>
+                </a>
+            </div>
+            <p class="text-sm text-gray-500">© 2025 NeuGenStudio. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Particle Background Animation
+        const canvas = document.getElementById('particle-background');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        let particles = [];
+
+        class Particle {
+            constructor(x, y, size, speedX, speedY) {
+                this.x = x;
+                this.y = y;
+                this.size = size;
+                this.speedX = speedX;
+                this.speedY = speedY;
+            }
+            update() {
+                if (this.x > canvas.width || this.x < 0) this.speedX = -this.speedX;
+                if (this.y > canvas.height || this.y < 0) this.speedY = -this.speedY;
+                this.x += this.speedX;
+                this.y += this.speedY;
+            }
+            draw() {
+                ctx.fillStyle = 'rgba(139, 92, 246, 0.5)';
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        function initParticles() {
+            for (let i = 0; i < 50; i++) {
+                let size = Math.random() * 2 + 1;
+                let x = Math.random() * (innerWidth - size * 2);
+                let y = Math.random() * (innerHeight - size * 2);
+                let speedX = (Math.random() * 0.4) - 0.2;
+                let speedY = (Math.random() * 0.4) - 0.2;
+                particles.push(new Particle(x, y, size, speedX, speedY));
+            }
+        }
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, innerWidth, innerHeight);
+            for (let i = 0; i < particles.length; i++) {
+                particles[i].update();
+                particles[i].draw();
+            }
+            requestAnimationFrame(animateParticles);
+        }
+
+        initParticles();
+        animateParticles();
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            particles = [];
+            initParticles();
+        });
+        
+        // Interactive Demo Typing Effect
+        const demoInput = document.getElementById('demo-input');
+        const demoText = "Generate a futuristic branding concept for a new tech startup...";
+        let i = 0;
+        function typeWriter() {
+            if (i < demoText.length) {
+                demoInput.innerHTML += demoText.charAt(i);
+                i++;
+                setTimeout(typeWriter, 50);
+            }
+        }
+        typeWriter();
+
+        // Testimonial Carousel
+        const testimonials = [
+            { quote: "NeuGenStudio revolutionized our branding with their AI-powered insights. The results were beyond our expectations.", author: "Jane Doe, CEO of TechCorp" },
+            { quote: "The AI product shoots saved us thousands in photography costs and delivered incredible images in record time.", author: "John Smith, Founder of InnovateX" },
+            { quote: "Integrating their AI assistant has significantly improved our customer engagement and support efficiency.", author: "Emily White, Head of Marketing at Solutions Inc." }
+        ];
+        const carouselContainer = document.getElementById('testimonial-carousel');
+        let currentTestimonial = 0;
+
+        function showTestimonial() {
+            const testimonial = testimonials[currentTestimonial];
+            carouselContainer.innerHTML = `
+                <div class="transition-opacity duration-1000 ease-in-out opacity-0" id="testimonial-slide">
+                    <p class="text-xl italic">"${testimonial.quote}"</p>
+                    <p class="mt-4 font-bold">- ${testimonial.author}</p>
+                </div>
+            `;
+            setTimeout(() => {
+                document.getElementById('testimonial-slide').classList.remove('opacity-0');
+            }, 10);
+        }
+
+        function nextTestimonial() {
+            if (document.getElementById('testimonial-slide')) {
+                document.getElementById('testimonial-slide').classList.add('opacity-0');
+                setTimeout(() => {
+                    currentTestimonial = (currentTestimonial + 1) % testimonials.length;
+                    showTestimonial();
+                }, 1000);
+            }
+        }
+
+        showTestimonial();
+        setInterval(nextTestimonial, 5000);
+
+        // Dark/Light Mode Toggle
+        const toggleButton = document.getElementById('dark-light-toggle');
+        const html = document.documentElement;
+
+        toggleButton.addEventListener('click', () => {
+            if (html.classList.contains('dark')) {
+                html.classList.remove('dark');
+            } else {
+                html.classList.add('dark');
+            }
+        });
+
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Instagram Popup
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                const popup = document.getElementById('insta-popup');
+                if (popup) {
+                    popup.classList.remove('hidden');
+                }
+            }, 2000); // 2-second delay
+        });
+    </script>
+</body>
+</html>
